@@ -1,0 +1,35 @@
+<Program> ::= <Statement> ; | <Statement> ; <Program>
+<Statement> ::= <VarDec> | <FunctionCall> | <FunctionDec> | <IfStmt> | <LoopStmt> | return <Expr>
+<VarDec> ::= let <Identifier> : <Type> = <Expr> | let <Identifier> = <Expr>
+<FunctionCall> ::= <Identifier>(<ArgList>)
+<ArgList> ::= <Identifier> | <Identifier> , <Identifiers>
+<FunctionDec> ::= fn <Identifier>(<ParamList>) : <Type> {<Program>}
+<ParamList> ::= <Identifier> : <Type> | <Identifier> : <Type> , <ParamList>
+<IfStmt> ::= if <Expr> {<Program>} | if <Expr> {<Program>} else {<Program>} | if <Expr> {<Program>} else <IfStmt>
+<LoopStmt> ::= while (<Expr>) {<Program>} | for <Identifier> in <Expr> to <Expr> {<Program>} | for <Identifier> in <Identifier> {<Program>}
+
+<Type> ::= Char | String | Int | Bool | Regex | Function(<ParamList>) | Void | <Type>[]
+
+<Expr> ::= <Expr> + <Expr> 
+  | <Expr> - <Expr> 
+  | <Expr> / <Expr> 
+  | <Expr> * <Expr> 
+  | <Expr> || <Expr> 
+  | <Expr> && <Expr> 
+  | <Expr> ~ <Expr>
+  | <Expr> == <Expr>
+  | <Expr> != <Expr>
+  | <Expr> > <Expr>
+  | <Expr> < <Expr>
+  | <Expr> >= <Expr>
+  | <Expr> <= <Expr>
+  | <Expr> % <Expr>
+  | !<Expr> 
+  | <Identifier>
+  | <Literal>
+  
+
+<Literal> ::= <Numbers> | <StringLiteral> | True | False | <ArrayLiteral>
+
+<ArrayLiteral> ::= { <CommaSeperatedExprs> } 
+
